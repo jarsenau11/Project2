@@ -22,7 +22,7 @@ public class UserDetail {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private AppUser user;
     
     @Column(name = "ssn")
     private int ssn;
@@ -63,7 +63,7 @@ public class UserDetail {
     public UserDetail() {}
 
     // no ID constructor
-    public UserDetail(User user, int ssn, String firstName, String middleName, String lastName, String email, Date dob,
+    public UserDetail(AppUser user, int ssn, String firstName, String middleName, String lastName, String email, Date dob,
         String street1, String street2, String city, String state, int zip, String country) {
         this.user = user;
         this.ssn = ssn;
@@ -81,7 +81,7 @@ public class UserDetail {
     }
 
     // full constructor
-    public UserDetail(long userDetailId, User user, int ssn, String firstName, String middleName, String lastName,
+    public UserDetail(long userDetailId, AppUser user, int ssn, String firstName, String middleName, String lastName,
             String email, Date dob, String street1, String street2, String city, String state, int zip,
             String country) {
         this.userDetailId = userDetailId;
@@ -108,11 +108,11 @@ public class UserDetail {
         this.userDetailId = userDetailId;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
     

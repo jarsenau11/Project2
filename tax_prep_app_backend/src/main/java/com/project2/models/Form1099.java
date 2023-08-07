@@ -31,7 +31,7 @@ import javax.validation.constraints.Pattern;
     private double totalCompensation;
 
     @DBRef
-    private User user;
+    private AppUser user;
 
     @DBRef
     private TaxFiling taxFiling;

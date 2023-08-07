@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project2.models.User;
+import com.project2.models.AppUser;
 import com.project2.services.UserService;
 
 @RestController
@@ -26,42 +26,42 @@ public class UserController {
 
     // get all users in the database
     @GetMapping
-    public ResponseEntity<List<User>> findAllUsers() {
-        List<User> users = userService.findAllUsers();
+    public ResponseEntity<List<AppUser>> findAllUsers() {
+        List<AppUser> users = userService.findAllUsers();
 
         if(users == null) {
             return ResponseEntity.noContent().build();
         }
 
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        return new ResponseEntity<List<AppUser>>(users, HttpStatus.OK);
     }
 
     // get user by id
     @GetMapping("/userById/{userId}")
-    public ResponseEntity<User> findByUserId(@PathVariable long userId) {
-        User user = userService.findById(userId);
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+    public ResponseEntity<AppUser> findByUserId(@PathVariable long userId) {
+        AppUser user = userService.findById(userId);
+        return new ResponseEntity<AppUser>(user, HttpStatus.OK);
     }
 
     // post new user
     @PostMapping("/newUser")
-        public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userService.createUser(user);
-        return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+        public ResponseEntity<AppUser> createUser(@RequestBody AppUser user) {
+        AppUser newUser = userService.createUser(user);
+        return new ResponseEntity<AppUser>(newUser, HttpStatus.CREATED);
     }
 
     // update user by id
     @PutMapping("/updateUser")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        User updatedUser = userService.updateUser(user);
-        return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+    public ResponseEntity<AppUser> updateUser(@RequestBody AppUser user) {
+        AppUser updatedUser = userService.updateUser(user);
+        return new ResponseEntity<AppUser>(updatedUser, HttpStatus.OK);
     }
 
     // delete by id
     @DeleteMapping("/deleteById/{userId}")
-    public ResponseEntity<User> deleteUse(@PathVariable long userId) {
-        User user = userService.findById(userId);
+    public ResponseEntity<AppUser> deleteUse(@PathVariable long userId) {
+        AppUser user = userService.findById(userId);
         userService.deleteUser(user);
-        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<AppUser>(HttpStatus.NO_CONTENT);
     }
 }

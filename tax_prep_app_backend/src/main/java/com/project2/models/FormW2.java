@@ -30,7 +30,7 @@ import javax.validation.constraints.Pattern;
     private double medicareWithheld;
 
     @DBRef
-    private User user;
+    private AppUser user;
 
     @DBRef
     private UserDetail ssn;
