@@ -10,6 +10,8 @@ import toast from "react-hot-toast"
 
 
 export default function TaxFiling() {
+  const URL = "http://54.221.143.25:8080/users/";
+
   const [user, setUser] = useState(getUser())
   const [taxFiling, setTaxFiling] = useState({
     married: false,
@@ -62,10 +64,10 @@ export default function TaxFiling() {
     setCurrentPage(2)
   }
 
-  const handleTaxSummarySubmit = (event: any) => {
+  const handleTaxSummarySubmit = () => {
     setUser((prev) => ({ ...prev, taxFilings: taxFiling }))
 
-    fetch('http://localhost:8080/users/' + user.id, {
+    fetch(URL + user.id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -1,5 +1,4 @@
 import { Button, Grid, Label } from "@trussworks/react-uswds"
-import { useState } from "react"
 import W2SummaryTable from "../components/w2/W2SummaryTable"
 import Table1099 from "../components/1099/Table1099"
 import { getUser } from "../slices/UserSlice"
@@ -31,7 +30,7 @@ const containerStyle = {
 
 export default function TaxSummary(props: TaxSummaryProps) {
 
-  const [user, setUser] = useState(getUser());   
+  const user = getUser();   
 
   return (
     <>

@@ -1,10 +1,10 @@
 import { Table } from "@trussworks/react-uswds";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { getUser } from "../../slices/UserSlice";
 
 export default function Table1099 () {
-  const [user, setUser] = useState(getUser())
+  const user = getUser();
 
 
   const { t, i18n } = useTranslation();
@@ -12,9 +12,7 @@ export default function Table1099 () {
   useEffect(() => {
       const lng = navigator.language;
       i18n.changeLanguage(lng);
-  }, [])
-
-  const lng = navigator.language;
+  }, [])  
 
   function formatCurrency(amount: number): string {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);

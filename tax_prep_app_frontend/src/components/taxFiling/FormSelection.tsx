@@ -1,6 +1,5 @@
 import { Button, Grid } from "@trussworks/react-uswds";
 import CustomCard from "../home/Card";
-import { useState } from "react"
 import { getUser } from "../../slices/UserSlice"
 
 interface FormsProps {
@@ -11,7 +10,7 @@ interface FormsProps {
 }
 
 export default function FormSelection(props: FormsProps) {
-    const [user, setUser] = useState(getUser())
+    const user = getUser();
 
     const containerStyle = {
         maxWidth: "1000px",

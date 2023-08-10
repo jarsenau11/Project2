@@ -1,12 +1,12 @@
-import { Button, Card, Grid, Table } from "@trussworks/react-uswds";
-import { useEffect, useState } from "react";
+import { Button, Grid, Table } from "@trussworks/react-uswds";
+import { useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { getUser } from "../../slices/UserSlice";
 import CustomCard from "../home/Card";
 
 export default function W2SummaryTable() {
-  const [user, setUser] = useState(getUser())
-  const [applyHoverStyle, setApplyHoverStyle] = useState(false)
+  const user = getUser();
+  
 
   const { t, i18n } = useTranslation();
 
@@ -14,8 +14,7 @@ export default function W2SummaryTable() {
     const lng = navigator.language;
     i18n.changeLanguage(lng);
   }, [])
-
-  const lng = navigator.language;
+  
 
   function formatCurrency(amount: number): string {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);

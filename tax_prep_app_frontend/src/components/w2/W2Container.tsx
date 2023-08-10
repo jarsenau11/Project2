@@ -1,7 +1,6 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, CardMedia, Grid } from '@trussworks/react-uswds';
+import { Grid } from '@trussworks/react-uswds';
 import W2Form from './W2Form';
 import W2Table from './W2SummaryTable';
-import { useState } from 'react';
 import { getUser } from '../../slices/UserSlice';
 
 const containerStyle = {
@@ -12,7 +11,7 @@ const containerStyle = {
 }
 
 export default function W2Container() {
-  const [user, setUser] = useState(getUser())
+  const user = getUser();
   return (
     <>
       <div style={containerStyle as React.CSSProperties}>

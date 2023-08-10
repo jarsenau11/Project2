@@ -1,12 +1,12 @@
 import { useState } from "react"
 import CreateEditUserAccount from "../components/account/CreateEditUserAccount"
 import DisplayPersonalInfo from "../components/account/DisplayPersonalInfo"
-import { User, getUser } from "../slices/UserSlice"
+import { getUser } from "../slices/UserSlice"
 
 export default function PersonalInformation() {
 
   const [showUpdateForm, setShowUpdateForm] = useState(false)
-  const [user, setUser] = useState<User>(getUser())
+  const user = getUser();
 
 
   const handleUpdateTransition = (): void => {

@@ -35,12 +35,12 @@ export default function Login() {
     const handleLoginSubmit = (event: any): void => {
         event.preventDefault()
 
-        const userCredentials = {
-            username, password
-        }
+        // const userCredentials = {
+        //     username, password
+        // }
 
         // dispatching loginUser function, passing in the userCredentials
-        dispatch(loginUser(userCredentials)).then((success) => {
+        dispatch(loginUser()).then((success) => {
             if(success) {
                 setUsername("")
                 setPassword("")

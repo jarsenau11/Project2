@@ -11,8 +11,8 @@ import TaxFiling from './pages/TaxFiling';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
-import { getUser } from './slices/UserSlice'
+import { useEffect } from 'react';
+
 
 function App() {
 
@@ -21,11 +21,7 @@ function App() {
     useEffect(() => {
         const lng = navigator.language;
         i18n.changeLanguage(lng);
-    }, [])
-
-    const lng = navigator.language;
-
-    const [user, setUser] = useState(getUser())
+    }, [])    
 
     const navItems = 
     // user.username == '' ? [] :

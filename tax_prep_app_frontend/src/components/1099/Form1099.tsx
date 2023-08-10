@@ -61,9 +61,7 @@ export default function Form1099(props: Form1099Props) {
   useEffect(() => {
     const lng = navigator.language;
     i18n.changeLanguage(lng);
-  }, [])
-
-  const lng = navigator.language;
+  }, [])  
 
   const handleTinChange = (event: any) => {
     if (event.target.value == "" || /^\d+$/.test(event.target.value)) {
@@ -177,7 +175,7 @@ export default function Form1099(props: Form1099Props) {
     }
   }
 
-  const handleUpdate1099Submit = (event: any): void => {
+  const handleUpdate1099Submit = (): void => {
 
   }
 

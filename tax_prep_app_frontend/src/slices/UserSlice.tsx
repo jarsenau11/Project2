@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-type UserCredentials = {
-    username: string
-    password: string
-}
+// type UserCredentials = {
+//     username: string
+//     password: string
+// }
 
 export interface User {
     id: string
@@ -100,12 +100,14 @@ export function getUser(): User {
     }
   }
 
-export const loginUser = createAsyncThunk(
-    'users/loginUser',
-    async (userCredentials: UserCredentials) => {
+  const URL = "http://54.221.143.25:8080/users/";
+
+export const loginUser = createAsyncThunk( URL + 
+    'loginUser',
+    async () => {
         // fetch request for login backend goes here --- currently just grabbing first user in the collection
         // pass userCredentials in the body and encrypt the password
-        fetch('http://localhost:8080/users')
+        fetch(URL)
             .then((res) => res.json())
             .then((data: User[]) => {
                 localStorage.setItem('user', JSON.stringify(data[1]))
@@ -121,7 +123,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         // user: null as any, <-- uncomment this and delete the fetch below once login is set up
-        user: fetch('http://localhost:8080/users')
+        user: fetch(URL)
         .then((res) => res.json())
         .then((data: User[]) => {
             localStorage.setItem('user', JSON.stringify(data[0])) //7 for no forms

@@ -1,7 +1,6 @@
 import { Grid } from '@trussworks/react-uswds';
 import Form1099 from '../1099/Form1099';
 import Table1099 from './Table1099';
-import { useState } from 'react';
 import { getUser } from '../../slices/UserSlice';
 
 const containerStyle = {
@@ -12,7 +11,7 @@ const containerStyle = {
 }
 
 export default function Container1099() {
-  const [user, setUser] = useState(getUser())
+  const user = getUser();
 
   return (
     <>

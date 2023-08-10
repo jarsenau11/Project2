@@ -48,17 +48,17 @@ export default function W2Form(props: W2FormProps) {
     dateSubmitted: ""
   } : {
     ein: "" + props?.existingForm?.ein, // convert this to number when writing to db
-    employerCity: props.existingForm.employerCity,
-    employerName: props.existingForm.employerName,
-    employerState: props.existingForm.employerState,
-    employerStreet1: props.existingForm.employerStreet1,
-    employerStreet2: props.existingForm.employerStreet2,
-    employerZip: "" + props.existingForm.employerZip, // convert this and below to numbers when writing to db
-    medicareWithheld: "" + props.existingForm.medicareWithheld,
-    ssWithheld: "" + props.existingForm.ssWithheld,
-    taxesWithheld: "" + props.existingForm.taxesWithheld,
-    wagesAndTips: "" + props.existingForm.wagesAndTips,
-    dateSubmitted: props.existingForm.dateSubmitted
+    employerCity: props.existingForm?.employerCity,
+    employerName: props.existingForm?.employerName,
+    employerState: props.existingForm?.employerState,
+    employerStreet1: props.existingForm?.employerStreet1,
+    employerStreet2: props.existingForm?.employerStreet2,
+    employerZip: "" + props.existingForm?.employerZip, // convert this and below to numbers when writing to db
+    medicareWithheld: "" + props.existingForm?.medicareWithheld,
+    ssWithheld: "" + props.existingForm?.ssWithheld,
+    taxesWithheld: "" + props.existingForm?.taxesWithheld,
+    wagesAndTips: "" + props.existingForm?.wagesAndTips,
+    dateSubmitted: props.existingForm?.dateSubmitted
   })
 
   const { t, i18n } = useTranslation();
@@ -67,8 +67,6 @@ export default function W2Form(props: W2FormProps) {
     const lng = navigator.language;
     i18n.changeLanguage(lng);
   }, [])
-
-  const lng = navigator.language;
 
   const handleEinChange = (event: any) => {
     if (event.target.value == "" || /^\d+$/.test(event.target.value)) {
@@ -143,40 +141,41 @@ export default function W2Form(props: W2FormProps) {
     else if (w2.employerZip.length != 5 && w2.employerZip.length != 9) {
       toast.error("Zip must be 5 or 9 digits")
     }
-    else {
-      function getCurrentFormattedDate(): string {
-        const now = new Date();
-        const month = (now.getMonth() + 1).toString().padStart(2, '0');
-        const day = now.getDate().toString().padStart(2, '0');
-        const year = now.getFullYear().toString();
+    // else {
+    //   function getCurrentFormattedDate(): string {
+    //     const now = new Date();
+    //     const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    //     const day = now.getDate().toString().padStart(2, '0');
+    //     const year = now.getFullYear().toString();
     
-        return `${month}-${day}-${year}`;
-    }    
-      const w2Final = {
-        ein: parseInt(w2.ein),
-        employerCity: w2.employerCity,
-        employerName: w2.employerName,
-        employerState: w2.employerState,
-        employerStreet1: w2.employerStreet1,
-        employerStreet2: w2.employerStreet2,
-        employerZip: parseInt(w2.employerZip),
-        medicareWithheld: parseInt(w2.medicareWithheld),
-        ssWithheld: parseInt(w2.ssWithheld),
-        taxesWithheld: parseInt(w2.taxesWithheld),
-        wagesAndTips: parseInt(w2.wagesAndTips),
-        submittedDate: getCurrentFormattedDate()
-      }
+    //     return `${month}-${day}-${year}`;
+    // }    
+      // const w2Final = {
+      //   ein: parseInt(w2.ein),
+      //   employerCity: w2.employerCity,
+      //   employerName: w2.employerName,
+      //   employerState: w2.employerState,
+      //   employerStreet1: w2.employerStreet1,
+      //   employerStreet2: w2.employerStreet2,
+      //   employerZip: parseInt(w2.employerZip),
+      //   medicareWithheld: parseInt(w2.medicareWithheld),
+      //   ssWithheld: parseInt(w2.ssWithheld),
+      //   taxesWithheld: parseInt(w2.taxesWithheld),
+      //   wagesAndTips: parseInt(w2.wagesAndTips),
+      //   submittedDate: getCurrentFormattedDate()
+      // }
 
-      // this is not working, still get null
-      if(user.formW2s == null) {
-        console.log("isnull")
-        setUser((prev) => ({ ...prev, formW2s: [w2Final]}))
-        console.log(user)
-      }
-      else {
-        user.formW2s.push(w2Final)
-      }
-      fetch('http://localhost:8080/users/' + user.id, {
+      const URL = "http://54.221.143.25:8080/users/";
+      // // this is not working, still get null
+      // if(user.formW2s == null) {
+      //   console.log("isnull")
+      //   setUser((prev) => ({ ...prev, formW2s: [w2Final]}))
+      //   console.log(user)
+      // }
+      // else {
+      //   user.formW2s.push(w2Final)
+      // }
+      fetch(URL + user.id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -213,8 +212,7 @@ export default function W2Form(props: W2FormProps) {
 
     }
 
-
-  }
+  
 
   const handleUpdateW2Submit = (): void => {
     // todo

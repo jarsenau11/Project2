@@ -25,6 +25,7 @@ interface CreateEditUserAccountProps {
 }
 
 export default function CreateEditUserAccount(props: CreateEditUserAccountProps) {
+    const URL = ""
 
     const userToCreateOrEdit = props.existingUser ? {
         id: props.existingUser.id,
