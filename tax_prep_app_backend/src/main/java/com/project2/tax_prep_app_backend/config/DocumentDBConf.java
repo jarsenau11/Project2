@@ -1,4 +1,4 @@
-package com.config;
+package com.project2.tax_prep_app_backend.config;
 
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.boot.autoconfigure.mongo.MongoPropertiesClientSettingsBuilderCustomizer;

@@ -1,17 +1,17 @@
 spring:
     data:
         mongodb:
-            uri: mongodb+srv://jespinosa:skillstorm123@cluster1.bkdj4fp.mongodb.net/
+            uri: mongodb://jespinosa:skillstorm1234@docdb-jespinosa.cluster-c4eqo06kg56i.us-east-1.docdb.amazonaws.com:27017/?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
             database: tax_prep
     output:
         ansi:
             enabled: ALWAYS
 
-# javax:
-#     net: 
-#         ssl:
-#             trustStore: /tmp/certs/rds-truststore.jks
-#             trustStorePassword: skillstorm123
+javax:
+    net: 
+        ssl:
+            trustStore: /tmp/certs/rds-truststore.jks
+            trustStorePassword: skillstorm123
 
 logging:
     level:
