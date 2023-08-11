@@ -13,6 +13,7 @@ import SignUp from './pages/SignUp';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { getUser } from './slices/UserSlice'
+import LogoutModal from './components/account/LogoutModal';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
                     <Route path='/add-w2' element={<W2Page />}/> 
                     <Route path='/add-1099' element={<Page1099/>}/> 
                     <Route path='/personal-info' element={<PersonalInformation />}/>
+                    <Route path='/logout' element={<LogoutModal/>}/>
 
                 </Routes>
 

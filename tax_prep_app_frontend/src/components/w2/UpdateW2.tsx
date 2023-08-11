@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { getUser } from "../../slices/UserSlice";
+import { useRef } from "react";
 import { Modal, ModalRef } from "@trussworks/react-uswds";
 import W2Form from "./W2Form";
 
